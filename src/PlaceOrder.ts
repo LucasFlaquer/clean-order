@@ -1,16 +1,7 @@
 import { Coupon } from "./Coupon"
 import { Order } from "./Order"
-interface InputItem {
-  description: string
-  price:number
-  quantity: number 
-}
-interface Input {
-  cpf: string
-    items: InputItem[],
-    coupon: string
-}
-
+import { PlaceOrderInput } from "./PlaceOrderInput"
+import { PlaceOrderOutput } from "./PlaceOrderOutput"
 
 export class PlaceOrder {
   coupons: Coupon[]
@@ -21,7 +12,7 @@ export class PlaceOrder {
     ]
     this.orders = []
   }
-  execute(input:Input) {
+  execute(input:PlaceOrderInput) {
     const order = new Order(input.cpf)
     for(const item of input.items) {
       order.addItem(item.description, item.price, item.quantity)
@@ -32,8 +23,8 @@ export class PlaceOrder {
     }
     const total = order.getTotal()
     this.orders.push(order)
-    return {
+    return new PlaceOrderOutput({
       total
-    }
+    })
   }
 }
