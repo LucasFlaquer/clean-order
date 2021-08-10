@@ -33,6 +33,7 @@ export class Order {
     if(this.coupon) {
       total -= total * this.coupon.percentage / 100
     }
+    total+=this.freight
     return total
   }
 
