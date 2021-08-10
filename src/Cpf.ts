@@ -10,15 +10,15 @@ export class Cpf {
     this.value = value
   }
 
-  validate(str:string) {
-    str=this.getOnlyNumbers(str)
-    if (this.isLengthInvalid(str)) return false
-    if (this.isAllEqual(str)) return false
-    const digit1 =  this.calculateDigit(str, this.FACTOR_DIGIT_1, this.MAX_DIGITS_1)
-    const digit2 = this.calculateDigit(str, this.FACTOR_DIGIT_2, this.MAX_DIGITS_2)
-    let nDigVerific = str.substring(str.length-2, str.length);  
-    const nDigResult = "" + digit1 + "" + digit2;  
-    return nDigVerific == nDigResult;
+  validate(cpf = "") {
+    cpf=this.getOnlyNumbers(cpf)
+    if (this.isLengthInvalid(cpf)) return false
+    if (this.isAllEqual(cpf)) return false
+    const digit1 =  this.calculateDigit(cpf, this.FACTOR_DIGIT_1, this.MAX_DIGITS_1)
+    const digit2 = this.calculateDigit(cpf, this.FACTOR_DIGIT_2, this.MAX_DIGITS_2)
+    let nDigVerific = cpf.substring(cpf.length-2, cpf.length);  
+    const calculatedCheckDigit = `${digit1}${digit2}`;
+    return nDigVerific == calculatedCheckDigit;
   }
   isLengthInvalid(str:string) {
     return str.length !== 11

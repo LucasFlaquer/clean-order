@@ -6,19 +6,23 @@ export class Order {
   cpf:Cpf
   items: OrderItem[]
   coupon: Coupon | undefined
+  freight: number
 
   constructor(cpf:string) {
-    
     this.cpf = new Cpf(cpf)
     this.items = []
+    this.freight = 0
   }
 
-  addItem(description:string, price:number, quantity: number) {
-    this.items.push(new OrderItem(description, price, quantity))
+  addItem(id:string, price:number, quantity: number) {
+    this.items.push(new OrderItem(id, price, quantity))
   }
 
   addCoupon(coupon: Coupon) {
-    this.coupon = coupon
+    if(!coupon.isExpired()) {
+      this.coupon = coupon
+
+    }
   }
 
   getTotal() {
