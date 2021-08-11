@@ -1,5 +1,9 @@
-import { PlaceOrder } from "./PlaceOrder";
-import { PlaceOrderInput } from "./PlaceOrderInput";
+import { CouponRepositoryMemory } from "../../src/CouponRepositoryMemory";
+import { ItemRepositoryMemory } from "../../src/ItemRepositoryMemory";
+import { OrderRepositoryMemory } from "../../src/OrderRepositoryMemory";
+import { PlaceOrder } from "../../src/PlaceOrder";
+import { PlaceOrderInput } from "../../src/PlaceOrderInput";
+
 
 test("Should make an order", ()=> {
   const input = new PlaceOrderInput({
@@ -12,7 +16,10 @@ test("Should make an order", ()=> {
     ],
     coupon: "VALE20"
   })
-  const placeOrder = new PlaceOrder();
+  const itemRepository = new ItemRepositoryMemory()
+  const couponRepository = new CouponRepositoryMemory()
+  const orderRepository = new OrderRepositoryMemory()
+  const placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository);
   const output = placeOrder.execute(input)
   expect(output.total).toBe(5982)
 })
@@ -28,7 +35,10 @@ test("Should make an order with dicount coupon expired", ()=> {
     ],
     coupon: "VALE20_EXPIRED"
   })
-  const placeOrder = new PlaceOrder();
+  const itemRepository = new ItemRepositoryMemory()
+  const couponRepository = new CouponRepositoryMemory()
+  const orderRepository = new OrderRepositoryMemory()
+  const placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository);
   const output = placeOrder.execute(input)
   expect(output.total).toBe(7400)
 })
@@ -44,7 +54,10 @@ test("Should make an order with freight calc", ()=> {
     ],
     coupon: "VALE20_EXPIRED"
   })
-  const placeOrder = new PlaceOrder();
+  const itemRepository = new ItemRepositoryMemory()
+  const couponRepository = new CouponRepositoryMemory()
+  const orderRepository = new OrderRepositoryMemory()
+  const placeOrder = new PlaceOrder(itemRepository, couponRepository, orderRepository);
   const output = placeOrder.execute(input)
   expect(output.freight).toBe(310)
 })
