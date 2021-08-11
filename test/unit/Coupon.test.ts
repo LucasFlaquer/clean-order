@@ -1,4 +1,4 @@
-import { Coupon } from "../../src/Coupon"
+import { Coupon } from "../../src/domain/entity/Coupon"
 
 test("Shoud verify if coupon is expired", ()=> {
   const coupon = new Coupon("VALE20", 20, new Date("2020-10-10"))

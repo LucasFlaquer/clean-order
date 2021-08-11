@@ -1,8 +1,9 @@
-import { CouponRepositoryMemory } from "../../src/CouponRepositoryMemory";
-import { ItemRepositoryMemory } from "../../src/ItemRepositoryMemory";
-import { OrderRepositoryMemory } from "../../src/OrderRepositoryMemory";
-import { PlaceOrder } from "../../src/PlaceOrder";
-import { PlaceOrderInput } from "../../src/PlaceOrderInput";
+import { PlaceOrder } from "../../src/application/PlaceOrder"
+import { PlaceOrderInput } from "../../src/application/PlaceOrderInput"
+import { CouponRepositoryMemory } from "../../src/infra/repository/memory/CouponRepositoryMemory"
+import { ItemRepositoryMemory } from "../../src/infra/repository/memory/ItemRepositoryMemory"
+import { OrderRepositoryMemory } from "../../src/infra/repository/memory/OrderRepositoryMemory"
+
 
 
 test("Should make an order", ()=> {

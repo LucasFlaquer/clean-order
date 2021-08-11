@@ -1,13 +1,12 @@
-import { Coupon } from "./Coupon"
-import { CouponRepository } from "./CouponRepository"
-import { FreightCalculator } from "./FreightCalculator"
-import { Item } from "./Item"
-import { ItemRepository } from "./ItemRepository"
-import { Order } from "./Order"
-import { OrderRepository } from "./OrderRepository"
-import { PlaceOrderInput } from "./PlaceOrderInput"
-import { PlaceOrderOutput } from "./PlaceOrderOutput"
-import { ZipcodeCalculatorAPIMemory } from "./ZipcodeCalculatorAPIMemory"
+import { Order } from "../domain/entity/Order";
+import { CouponRepository } from "../domain/repository/CouponRepository";
+import { ItemRepository } from "../domain/repository/ItemRepository";
+import { OrderRepository } from "../domain/repository/OrderRepository";
+import { FreightCalculator } from "../domain/service/FreightCalculator";
+import { ZipcodeCalculatorAPIMemory } from "../infra/gateway/memory/ZipcodeCalculatorAPIMemory";
+import { PlaceOrderInput } from "./PlaceOrderInput";
+import { PlaceOrderOutput } from "./PlaceOrderOutput";
+
 
 
 export class PlaceOrder {

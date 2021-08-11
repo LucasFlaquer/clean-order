@@ -1,5 +1,6 @@
-import { Coupon } from "../../src/Coupon"
-import { Order } from "../../src/Order"
+import { Coupon } from "../../src/domain/entity/Coupon"
+import { Order } from "../../src/domain/entity/Order"
+
 
 test('Shoud not make an order without a valid cpf', () => {
   const cpf = '00000000000'
