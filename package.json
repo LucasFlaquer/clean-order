@@ -12,5 +12,8 @@
   "scripts": {
     "build": "tsc",
     "test": "tsc && jest dist/"
+  },
+  "dependencies": {
+    "pg-promise": "^10.11.0"
   }
 }
